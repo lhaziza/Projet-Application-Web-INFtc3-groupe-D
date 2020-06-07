@@ -30,7 +30,7 @@ label span {
 <main>
 
 <h1>
-Continent : North America 
+Continent : Amérique du Nord 
 </h1>
 
 #toute cette partie contient des informations de la bdd, nom des variables à réajuster à postériori
