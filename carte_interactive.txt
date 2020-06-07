@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<title>carte_interactive.html</title>
+<meta charset='utf-8'>
+<style>
+main {
+  margin: 20px;
+  padding: 10px;
+  border: 1px solid #666;
+  border-radius: 5px;
+  box-shadow: 3px 3px 3px #444;
+  background: linear-gradient(0deg, #ADD8E6, skyblue);
+}
+h1 {
+  margin-top: 0;
+  color: peru;
+  font-family: serif;
+  text-shadow: 1px 1px white;
+  font-variant: small-caps;
+  }
+label {
+  display: block;
+  padding-bottom: 0.5em;
+}
+label span {
+  display: inline-block;
+  width : 5em;
+}
+</style>
+
+<main>
+
+<h1>
+Continent : North America 
+</h1>
+
+#toute cette partie contient des informations de la bdd, nom des variables à réajuster à postériori
+<div>
+<label><span>Pays :</span><input id="pays" name="pays"></label>
+<label><span> </span> <button id="bouton">Fiche</button>
+</div>
+<br/>
+###
+<br/>
+
+<div id="country_data">
+ <h1 id="country_name"></h1>
+ <div><span class="label">Pays pointé:</span><span class="value" id="wp"></span></div>
+ <br/>
+ <div><span class="label">Capitale:</span><span class="value" id="capital"></span></div>
+ <br/>
+ <div><span class="label">Latitude:</span><span class="value" id="latitude"></span></div>
+ <br/>
+ <div><span class="label">Longitude:</span><span class="value" id="longitude"></span></div>
+ <br/>
+ <div><span class="label">Drapeau:</span><span class="value" id="flag"></span></div>
+ <br/>
+ <div><span class="label">Dirigeant:</span><span class="value" id="leader_name1"></span></div>
+ <br/>
+ <div><span class="label">Superficie (en km2):</span><span class="value" id="area_km2"></span></div>
+ <br/>
+ <div><span class="label">Densité de la population:</span><span class="value" id="population_density"></span></div>
+ <br/>
+ <div><span class="label">Pour plus d'informations:</span><a id="wp" href="">wikipedia</a></div>
+</div>
+
+
+</main>
