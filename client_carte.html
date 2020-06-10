@@ -2,16 +2,24 @@
 
 <script src="leaflet.js"> // Bibliothèque Leaflet : http://leafletjs.com/ </script>
 
-<title>Projet Web - Amérique du Nord</title>
+<title> Projet Web - Amérique du Nord </title>
 <link rel="stylesheet" type="text/css" href="leaflet.css" /> 
 <link rel="stylesheet" type="text/css" href="style.css"/>
+
+<!-- Mise en forme supplémentaire -->
+<style>
+h1 {  
+  color: thistle;
+  font-variant: small-caps;    
+  }
+</style>
 
 <meta charset="utf-8">
 
 <!-- Récupération de la liste des pays au chargement de la page -->
 <body onload="load_data();">
 
-  <h1>Continent : Amérique du Nord</h1>
+  <a href="https://fr.wikipedia.org/wiki/Am%C3%A9rique_du_Nord"><h1> Continent : Amérique du Nord </h1></a>
   <div>
 
   <!-- Zone pour l'insertion de la carte OSM via Leaflet -->
@@ -22,6 +30,22 @@
 
   </div>
  </body>
+</br>
+</br>
+</br>
+</br>
+</br>
+</br>
+</br>
+</br>
+</br>
+<footer>
+<h2>
+Credits 2020, Tous droits reserves
+</br>
+<a href="http://www.centrale-conseil.fr/">Bruneau Marin,</a> <a href="http://www.centrale-conseil.fr/">Denisart Bastien,</a> <a href="https://www.solidari-terre.org/">Haziza Lucie,</a> <a href="http://www.centrale-conseil.fr/">Porte Tom,</a> <a href="https://www.pole-emploi.fr/accueil/">Varrier Quentin(mdr)</a>
+</h2>
+</footer>
 
 
 <script>
@@ -80,7 +104,7 @@ function OnMarkerClick (e) {
 
     // affichage dans la zone 'description' du nom (reprise dans le popup)
     // et de la description récupérée par l'appel au serveur
-    description.innerHTML =  '<b><i>' + e.target.getPopup().getContent() + '</i></b><br>'+ data.name + '<br><u> Latitude</u>' + data.latitude + '<br><u> Longitude</u>' + data.longitude +'<br><u> Capital</u>'+data.capital+'<br><u> Leader name </u>'+data.leader_name1+'<br><u> area in km2</u>'+data.area_km2+'<br><u> Density of population</u>'+data.population_density_km2+'<br><u> flage </u>'+data.flag;
+    description.innerHTML =  '<b><i>' + e.target.getPopup().getContent() + '</i></b><br>'+ data.name + '<br><u> Latitude</u>' + data.latitude + '<br><u> Longitude</u>' + data.longitude ;
   };
 
   // Le numéro du lieu est récupéré via la propriété personnalisée du marqueur
