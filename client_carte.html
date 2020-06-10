@@ -1,14 +1,14 @@
-﻿<!DOCTYPE html>  
+<!DOCTYPE html>  
 
 <script src="leaflet.js"> // Bibliothèque Leaflet : http://leafletjs.com/ </script>
 
-<title>Exemple de carte glissante</title>
+<title>Projet Web - Amérique du Nord</title>
 <link rel="stylesheet" type="text/css" href="leaflet.css" /> 
 <link rel="stylesheet" type="text/css" href="style.css"/>
 
 <meta charset="utf-8">
-  
-<!-- Récupération de la liste des lieux insolites au chargement de la page -->
+
+<!-- Récupération de la liste des pays au chargement de la page -->
 <body onload="load_data();">
 
   <h1>Continent : Amérique du Nord</h1>
@@ -41,7 +41,7 @@ function load_data () {
   // objet pour l'envoi d'une requête Ajax
   var xhr = new XMLHttpRequest();
 
-  // fonction appelée lorsque la réponse à la requête (liste des lieux insolites) sera arrivée
+  // fonction appelée lorsque la réponse à la requête (liste des pays) sera arrivée
   xhr.onload = function() {
 
     // transformation des données renvoyées par le serveur
@@ -60,7 +60,7 @@ function load_data () {
     }
   };
 
-  // Envoi de la requête Ajax pour la récupération de la liste des lieux insolites
+  // Envoi de la requête Ajax pour la récupération de la liste des pays
   xhr.open('GET','/location',true);
   xhr.send();
 }
@@ -71,7 +71,7 @@ function OnMarkerClick (e) {
   // objet pour l'envoi d'une requête Ajax
   var xhr = new XMLHttpRequest();
 
-  // fonction appelée lorsque la réponse à la requête (description d'un lieu insolite) sera arrivée
+  // fonction appelée lorsque la réponse à la requête (description d'un pays) sera arrivée
   xhr.onload = function() {
 
     // transformation des données renvoyées par le serveur
