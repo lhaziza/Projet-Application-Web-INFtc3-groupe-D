@@ -34,7 +34,12 @@ def get_capital(wp_info):
         # parfois l'information récupérée comporte plusieurs lignes
         # on remplace les retours à la ligne par un espace
         capital = wp_info['capital'].replace('\n',' ')
-        #Cette etape permet de retirer les parenthèses
+#On distingue le cas des Etats Unis, la disjonction de cas ne généralise pas le problème
+#mais on aurait pu detecter une séquence de charactère qui annonce la capitale pour
+#choisir les indices à selectionner dans "capital"
+        if capital[17:27] == 'Washington':
+            return 'Washington'
+
         return capital
     else :    
         # Aveu d'échec, on ne doit jamais se retrouver ici
@@ -62,8 +67,11 @@ def get_more(wp_info):
         # parfois l'information récupérée comporte plusieurs lignes
         # on remplace les retours à la ligne par un espace
         leader_name1 = wp_info['leader_name1'].replace('\n',' ')
-
-        sortie.append(leader_name1)
+        if leader_name1[10:21] == 'Donald Trump':
+            sortie.append('Donald Trump')
+        else:
+            sortie.append(leader_name1)
+            
     else :    
         # Aveu d'échec, on ne doit jamais se retrouver ici
         print(' Could not fetch country gov {}'.format(wp_info))
@@ -76,10 +84,16 @@ def get_more(wp_info):
         area_km2 = wp_info['area_km2'].replace('\n',' ')
 
         sortie.append(area_km2)
-    else :    
-        # Aveu d'échec, on ne doit jamais se retrouver ici
-        print(' Could not fetch country area_km2 {}'.format(wp_info))
-        sortie.append('inconnu')
+    else : 
+#On distingue le cas ou l'expression est donnée en km² ou en miles² pour que le resultat soit
+#toujours en km². 
+        if 'area_sq_mi' in wp_info:
+            area_km2 = 1.6*int(wp_info['area_sq_mi'].replace(',',''))
+            sortie.append(area_km2)
+        else:
+            # Aveu d'échec, on ne doit jamais se retrouver ici
+            print(' Could not fetch country area_km2 {}'.format(wp_info))
+            sortie.append('inconnu')
         
     if 'population_density_km2' in wp_info:
         
@@ -88,10 +102,18 @@ def get_more(wp_info):
         population = wp_info['population_density_km2'].replace('\n',' ')
 
         sortie.append(population)
-    else :    
-        # Aveu d'échec, on ne doit jamais se retrouver ici
-        print(' Could not fetch country population {}'.format(wp_info))
-        sortie.append('inconnu')
+    else : 
+#On distingue le cas ou l'expression est donnée en km² ou en miles² pour que le resultat soit
+#toujours en km². 
+        if 'population_density_sq_mi' in wp_info:
+            population = 1.6*int(wp_info['population_density_sq_mi'].replace(',',''))
+            sortie.append(population)
+        else :    
+            # Aveu d'échec, on ne doit jamais se retrouver ici
+            print(' Could not fetch country population {}'.format(wp_info))
+            sortie.append('inconnu')
+        
+    
     print(sortie[0],sortie[1],sortie[2],sortie[3])
     return sortie[0],sortie[1],sortie[2],sortie[3]
 #Dans ce code, on réalise la même procédure pour plusieurs informations obtenues afin de les renvoyer
@@ -178,12 +200,22 @@ def get_coords(wp_info):
             print(' Could not parse coordinates info {}'.format(wp_info['coordinates']))
             return None
 
+
         str_coords = m.group(1)
 
         # on convertit en numérique et on renvoie
         if str_coords[0:1] in '0123456789':
+            print(cv_coords(str_coords))
             return cv_coords(str_coords)
-        
+    else:
+        capital = wp_info['capital'].replace('\n',' ')
+        if capital[17:27] == 'Washington':
+#On distingue le cas des etats unis (cette disjonction ne permet pas de distinguer tous les cas 
+#mais on pourrait imaginer une structure qui detecte les charactères 'lat' et 'long' et qui 
+#recupère l'indice des valeurs puis les valeurs de cette manière)
+            latitude = int(capital[45:47])+int(capital[48:50])/60
+            longitude = int(capital[53:55])+int(capital[56:58])/60
+            return {'lat':latitude,'lon':longitude}
         
         
         
