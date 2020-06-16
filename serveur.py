@@ -14,7 +14,7 @@ import json
 class RequestHandler(http.server.SimpleHTTPRequestHandler):
 
   # sous-répertoire racine des documents statiques
-  static_dir = '/client_projet'
+  static_dir = ''
 
   # on surcharge la méthode qui traite les requêtes GET
   # deux possiblité de get: soit location ou description
