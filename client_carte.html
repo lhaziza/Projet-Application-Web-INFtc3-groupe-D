@@ -104,7 +104,7 @@ function OnMarkerClick (e) {
 
     // affichage dans la zone 'description' du nom (reprise dans le popup)
     // et de la description récupérée par l'appel au serveur
-    description.innerHTML =  '<b><i>' + e.target.getPopup().getContent() + '</i></b><br>'+ data.name+'<br><u> Capital : </u>'+data.capital + '<br><u> Latitude : </u>' + data.latitude + '<br><u> Longitude : </u>' + data.longitude+'<br><u> Nom du Leader : </u>'+data.leader_name1+'<br><u> Surface : </u>'+data.area_km2+'<br><u> Densité de population : </u>'+data.population_density_km2+'habitants/km2'+'<br><u> Drapeau : </u>'+data.flag ;
+    description.innerHTML =  '<b><i>' + e.target.getPopup().getContent() + '</i></b><br>'+ data.name+'<br><u> Capital : </u>'+data.capital + '<br><u> Latitude : </u>' + data.latitude + '<br><u> Longitude : </u>' + data.longitude+'<br><u> Nom du Leader : </u>'+data.leader_name1+'<br><u> Surface : </u>'+data.area_km2+' km2'+'<br><u> Densité de population : </u>'+data.population_density_km2+' habitants/km2'+'<br><u> Drapeau : </u>'+data.flag ;
   };
 
   // Le numéro du lieu est récupéré via la propriété personnalisée du marqueur
