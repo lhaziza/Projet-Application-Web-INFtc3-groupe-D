@@ -16,20 +16,17 @@ class RequestHandler(http.server.SimpleHTTPRequestHandler):
   # sous-répertoire racine des documents statiques
   static_dir = '/client_projet'
 
-  # version du serveur
-  server_version = 'TD3_mieux-insolites.py/0.1'
-
   # on surcharge la méthode qui traite les requêtes GET
   # deux possiblité de get: soit location ou description
   def do_GET(self): #"surchargé pour renvoyer les infos"
     self.init_params()
 
-    # requete location - retourne la liste de lieux et leurs coordonnées géogrpahiques
+    # requete location - retourne la liste de lieux et leurs coordonnées géographiques
     if self.path_info[0] == "location":
       pays = self.db_get_countries()
       data = []#on ne va prendre ici que les infos utiles à la carte
       for p in pays:
-          coord = {'wp' : p['wp'], 'lat' : p['latitude'], 'lon' : p['longitude'], 'name' : p['name']}
+          coord = {'wp' : p['wp'], 'lat' : p['latitude'], 'lon' : p['longitude'], 'name' : p['name']}#identifiant, latitude, longitude, nom 
           data.append(coord)
       self.send_json(data)
 
@@ -40,14 +37,14 @@ class RequestHandler(http.server.SimpleHTTPRequestHandler):
       for c in data:
         print ("on parcours la liste de données")# on parcourt la liste pour chercher le pays qu'on veut décrire 
         print(c['name'])
-        if c['wp'] == (self.path_info[1]):
+        if c['wp'] == (self.path_info[1]):# si on trouve le bon identifiant
             donnees = {}
             liste_cle = []
             for k in c.keys():# on parcourt les différentes clé du dictionnaire afin de récupérer ce qu'il y a dedans
                 print(k)# wp name capital latitude longitude flag leader_name1 area_km2 population density_km2
                 liste_cle.append(k)
                 print (c[k])
-                donnees[k] = c[k]# on ajoute à donnée les information contenues dans les clés du dictionnaire 
+                donnees[k] = c[k]# on ajoute à donnée les informations contenues dans les clés du dictionnaire 
             print(donnees)
             self.send_json(donnees)# on envoie les informations au format Json
             break
@@ -66,7 +63,7 @@ class RequestHandler(http.server.SimpleHTTPRequestHandler):
       self.send_static()
 
 
-  # méthode pour traiter les requêtes POST - non utilisée dans l'exemple
+  # méthode pour traiter les requêtes POST -
   def do_POST(self):
     self.init_params()
 
