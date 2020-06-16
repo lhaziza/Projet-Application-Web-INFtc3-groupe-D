@@ -26,7 +26,7 @@ h1 {
   <div id="map" style="margin-bottom:1.33em"></div>  
 
   <!-- Zone pour l'affichage dynamique des descriptions -->
-  <h3 id="description"></h3>
+  <p id="description"></p>
 
   </div>
  </body>
@@ -104,8 +104,8 @@ function OnMarkerClick (e) {
 
     // affichage dans la zone 'description' du nom (reprise dans le popup)
     // et de la description récupérée par l'appel au serveur
-    description.innerHTML =  '<b><i>' + e.target.getPopup().getContent() + '</i></b><br>'+ data.name+'<br><u> Capital : </u>'+data.capital + '<br><u> Latitude : </u>' + data.latitude + '<br><u> Longitude : </u>' + data.longitude+'<br><u> Nom du Leader : </u>'+data.leader_name1+'<br><u> Surface : </u>'+data.area_km2+' km2'+'<br><u> Densité de population : </u>'+data.population_density_km2+' habitants/km2'+'<br><u> Drapeau : </u>'+data.flag ;
-  };
+    description.innerHTML =  <h3>'<b><i>' + e.target.getPopup().getContent() + '</i></b><br>'+ data.name+'<br><u> Capital : </u>'+data.capital + '<br><u> Latitude : </u>' + data.latitude + '<br><u> Longitude : </u>' + data.longitude+'<br><u> Nom du Leader : </u>'+data.leader_name1+'<br><u> Surface : </u>'+data.area_km2+' km2'+'<br><u> Densité de population : </u>'+data.population_density_km2+' habitants/km2'+'<br><u> Drapeau : </u>'+data.flag </h3> ;
+   };
 
   // Le numéro du lieu est récupéré via la propriété personnalisée du marqueur
   var idnum = e.target.idnum
