@@ -1,11 +1,11 @@
-## Notice d'utilisation de l'application Web ## 
+# Notice d'utilisation de l'application Web # 
 __________________________________________________
-# Installation # 
+## Installation ## 
 
 
 
 __________________________________________________
-# Utilisation # 
+## Utilisation ## 
 
 Une fois l'application installée, une page web s'ouvre.
 
@@ -26,7 +26,7 @@ Enfin, en dessous de ces informations s'affiche le drapeau du pays.
 En bas de la page, sont écrits les noms des personnes impliquées dans la création de l'application ainsi que l'année de création.
 
 _________________________________________________
-# Objectifs de l'application #
+## Objectifs de l'application ##
 
 Cette application vise à renseigner les informations principales des pays d'Amérique du Nord. 
 C'est une interface ludique qui cherche à attiser la curiosité et développer la culture de son utilisateur.
