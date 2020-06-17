@@ -15,7 +15,7 @@ Il faudra toujours s’assurer que le fichier client est bien stocké avec : la 
 __________________________________________________
 ## Utilisation ## 
 
-Une fois l'application installée, une page web s'ouvre. On trouvera la notice d'installation en section 5 de la documentation technique.
+Une fois l'application installée, une page web s'ouvre.
 
 En haut de la page web figure le titre de l'application, dans un bandeau blanc.
 En cliquant dessus, l'utilisateur accède à la page wikipédia du continent traité ici, l'Amérique du Nord.
