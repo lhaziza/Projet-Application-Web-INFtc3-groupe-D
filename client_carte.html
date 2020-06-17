@@ -90,7 +90,7 @@ function OnMarkerClick (e) {
 
     // affichage dans la zone 'description' du nom (reprise dans le popup)
     // et de la description récupérée par l'appel au serveur
-    description.innerHTML =  '<b><i>' + e.target.getPopup().getContent() + '</i></b><br>'+ data.name+'<br><u> Capitale :</u> '+data.capital + '<br>(<u> Latitude :</u> ' + Math.round(data.latitude*100)/100 + '<u> Longitude : </u> ' + Math.round(data.longitude*100)/100+')<br><u> Nom du Leader :</u> '+data.leader_name1+'<br><u> Surface :</u> '+data.area_km2+' km2'+'<br><u> Densité de population :</u> '+data.population_density_km2+' habitants/km2'+'<br><u> Drapeau :</u> '+data.flag ;
+    description.innerHTML =  '<br><h2>'+ data.name+'</h2><br><u> Capitale :</u> '+data.capital + '<br>(<u> Latitude :</u> ' + Math.round(data.latitude*100)/100 + '<u> Longitude : </u> ' + Math.round(data.longitude*100)/100+')<br><u> Nom du Leader :</u> '+data.leader_name1+'<br><u> Surface :</u> '+data.area_km2+' km2'+'<br><u> Densité de population :</u> '+data.population_density_km2+' habitants/km2'+'<br><u> Drapeau :</u> '+data.flag ;
     flag.innerHTML = '<img src="flags/' + data.flag + '" alt='+data.name+'>';
    };
 
