@@ -34,11 +34,18 @@ def get_capital(wp_info):
         # parfois l'information récupérée comporte plusieurs lignes
         # on remplace les retours à la ligne par un espace
         capital = wp_info['capital'].replace('\n',' ')
-#On distingue le cas des Etats Unis, la disjonction de cas ne généralise pas le problème
-#mais on aurait pu detecter une séquence de charactère qui annonce la capitale pour
-#choisir les indices à selectionner dans "capital"
-        if capital[17:27] == 'Washington':
-            return 'Washington'
+        print(capital[17::],capital)
+        if len(capital) >= 25:
+            #Ici on traite les cas similaire à celui des Etats Unis
+            result=''
+            i=17
+            while capital[i] != ']':
+                result += capital[i]
+                i += 1
+            capital = str(result)
+        else:
+            #On retire les crochets
+            capital = capital[2:len(capital)-2]
 
         return capital
     else :    
@@ -209,13 +216,23 @@ def get_coords(wp_info):
             return cv_coords(str_coords)
     else:
         capital = wp_info['capital'].replace('\n',' ')
-        if capital[17:27] == 'Washington':
-#On distingue le cas des etats unis (cette disjonction ne permet pas de distinguer tous les cas 
-#mais on pourrait imaginer une structure qui detecte les charactères 'lat' et 'long' et qui 
-#recupère l'indice des valeurs puis les valeurs de cette manière)
-            latitude = int(capital[45:47])+int(capital[48:50])/60
-            longitude = int(capital[53:55])+int(capital[56:58])/60
-            return {'lat':latitude,'lon':longitude}
+        r = 0
+        for i in range(len(capital)-4):
+            if r==0 and capital[i] == 'c' and capital[i+1] == 'o'and capital[i+2] == 'o' and capital[i+3] == 'r' and capital[i+4] == 'd':
+                r=1
+                rang=i
+#Ici on a donc un code qui detecte la séquence 'coord' et qui permet de renvoyer les valeur lon et lat
+#De cette manière on gère toutes les exceptions qui ont la même forme que les Etats Unis 
+    
+
+        latitude = int(capital[rang+6:rang+8])+int(capital[rang+9:rang+11])/60
+        if capital[rang+12] == "S":
+            latitude *= -1
+        longitude = int(capital[rang+14:rang+16])+int(capital[rang+17:rang+19])/60
+        if capital[rang+20] == "W":
+            longitude *= -1
+#On gère egalementl'orientation de la coordonnée (NSEW)
+        return {'lat':latitude,'lon':longitude}
         
         
         
