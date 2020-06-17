@@ -1,6 +1,14 @@
 # Notice d'utilisation de l'application Web # 
 __________________________________________________
 ## Installation ## 
+L’installation de cette application se fait en plusieurs étapes.  
+Dans un premier temps, il s’agit de récupérer l’intégralité du répertoire github. 
+Dans un second temps, il faut lancer le serveur en exécutant le fichier serveur.py. Attention à bien l’exécuter dans une nouvelle console afin que le port utilisé (8080) soit bien libre. 
+Une fois le serveur lancé, on peut ouvrir dans la fenêtre de navigateur l’application web correspondant au client (fichier HTML) nommé client_carte. Le lien suivant peut être utilisé : 
+
+http://localhost:8080/client_carte.html
+
+Il faudra toujours s’assurer que le fichier client est bien stocké avec : la feuille CSS style, les documents leaflet, le dossier flags (contenant les images de drapeau) et le dossier images (contenant les images de marqueurs). De plus, il faudra que le serveur (fichier serveur.py) et la base de données (pays.sqlite) restent dans le même dossier. 
 
 
 
