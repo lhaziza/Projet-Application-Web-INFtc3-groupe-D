@@ -58,22 +58,22 @@ class RequestHandler(http.server.SimpleHTTPRequestHandler):
       self.send_static()
 
 
-  # méthode pour traiter les requêtes HEAD
-  def do_HEAD(self):
-      self.send_static()
+ #  # méthode pour traiter les requêtes HEAD
+ # def do_HEAD(self):
+ #      self.send_static()
 
 
-  # méthode pour traiter les requêtes POST -
-  def do_POST(self):
-    self.init_params()
+ #  # méthode pour traiter les requêtes POST -
+ # def do_POST(self):
+ #    self.init_params()
 
-    # requête générique
-    if self.path_info[0] == "service":
-      self.send_html(('<p>Path info : <code>{}</code></p><p>Chaîne de requête : <code>{}</code></p>' \
-          + '<p>Corps :</p><pre>{}</pre>').format('/'.join(self.path_info),self.query_string,self.body));
+ #    # requête générique
+ #    if self.path_info[0] == "service":
+ #      self.send_html(('<p>Path info : <code>{}</code></p><p>Chaîne de requête : <code>{}</code></p>' \
+ #          + '<p>Corps :</p><pre>{}</pre>').format('/'.join(self.path_info),self.query_string,self.body));
 
-    else:
-      self.send_error(405)
+ #    else:
+ #      self.send_error(405)
 
 
   # on envoie le document statique demandé
@@ -109,15 +109,15 @@ class RequestHandler(http.server.SimpleHTTPRequestHandler):
 
   # on envoie la réponse
   def send(self,body,headers=[]):
-     encoded = bytes(body, 'UTF-8')
+      encoded = bytes(body, 'UTF-8')
 
-     self.send_response(200)
+      self.send_response(200)
 
-     [self.send_header(*t) for t in headers]
-     self.send_header('Content-Length',int(len(encoded)))
-     self.end_headers()
+      [self.send_header(*t) for t in headers]
+      self.send_header('Content-Length',int(len(encoded)))
+      self.end_headers()
 
-     self.wfile.write(encoded)
+      self.wfile.write(encoded)
 
 
   # on analyse la requête pour initialiser nos paramètres
